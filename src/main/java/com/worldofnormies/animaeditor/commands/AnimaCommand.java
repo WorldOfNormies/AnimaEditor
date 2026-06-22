@@ -435,10 +435,7 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
                 kit.setDisplayName(args[2]);
                 kit.setCreator(player.getName());
                 kit.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                kit.setMaterial(item.getType().name());
-                if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
-                    kit.setItemName(mm.serialize(item.getItemMeta().displayName()));
-                }
+                kit.getItems().add(item.clone());
                 plugin.getKitManager().addKit(kit);
                 player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("kit_saved")));
             }
@@ -479,31 +476,12 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        // Build item from kit data
-        try {
-            org.bukkit.Material mat = org.bukkit.Material.valueOf(kit.getMaterial());
-            ItemStack item = new ItemStack(mat);
-            ItemMeta meta = item.getItemMeta();
-            if (meta != null && kit.getItemName() != null && !kit.getItemName().isEmpty()) {
-                meta.displayName(plugin.getGradientManager().parse(kit.getItemName()));
-            }
-            if (meta != null && !kit.getLore().isEmpty()) {
-                List<Component> lore = new ArrayList<>();
-                for (String line : kit.getLore()) {
-                    lore.add(plugin.getGradientManager().parse(line));
-                }
-                meta.lore(lore);
-            }
-            if (meta != null) {
-                meta.setUnbreakable(kit.isUnbreakable());
-                item.setItemMeta(meta);
-            }
-            target.getInventory().addItem(item);
-            player.sendMessage(mm.deserialize(prefix + " <green>Gave kit <white>" + kit.getDisplayName() + " <green>to <white>" + target.getName()));
-            target.sendMessage(mm.deserialize(prefix + " <green>You received kit " + kit.getDisplayName()));
-        } catch (Exception e) {
-            player.sendMessage(mm.deserialize(prefix + " <red>Failed to build kit item: " + e.getMessage()));
+        // Give all items in the kit
+        for (ItemStack item : kit.getItems()) {
+            target.getInventory().addItem(item.clone());
         }
+        player.sendMessage(mm.deserialize(prefix + " <green>Gave kit <white>" + kit.getDisplayName() + " <green>to <white>" + target.getName()));
+        target.sendMessage(mm.deserialize(prefix + " <green>You received kit " + kit.getDisplayName()));
     }
 
     private void handlePermission(Player player, String[] args, String prefix) {

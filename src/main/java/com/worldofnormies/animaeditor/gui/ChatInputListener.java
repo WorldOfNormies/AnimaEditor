@@ -34,6 +34,11 @@ public class ChatInputListener implements Listener {
     /** For "lore" mode — accumulates lines until "done" */
     private final List<Component> pendingLore = new ArrayList<>();
 
+    /** For "kit_save_multi" mode */
+    private List<ItemStack> pendingItems = new ArrayList<>();
+
+    public void setPendingItems(List<ItemStack> items) { this.pendingItems = items; }
+
     public ChatInputListener(AnimaEditorPlugin plugin, Player player, String mode) {
         this.plugin = plugin;
         this.player = player;
@@ -61,6 +66,7 @@ public class ChatInputListener implements Listener {
                 case "name" -> handleName(msg, prefix);
                 case "lore" -> handleLore(msg, prefix);
                 case "kit_save" -> handleKitSave(msg, prefix);
+                case "kit_save_multi" -> handleKitSaveMulti(msg, prefix);
                 case "enchant" -> handleEnchant(msg, prefix);
                 case "gradient" -> handleGradient(msg, prefix);
             }
@@ -118,22 +124,22 @@ public class ChatInputListener implements Listener {
         kit.setDisplayName(msg);
         kit.setCreator(player.getName());
         kit.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        kit.setMaterial(held.getType().name());
+        kit.getItems().add(held.clone());
 
-        ItemMeta meta = held.getItemMeta();
-        if (meta != null && meta.hasDisplayName()) {
-            kit.setItemName(mm.serialize(meta.displayName()));
-        }
-        if (meta != null && meta.hasLore() && meta.lore() != null) {
-            List<String> loreStr = new ArrayList<>();
-            for (Component line : meta.lore()) {
-                loreStr.add(mm.serialize(line));
-            }
-            kit.setLore(loreStr);
-        }
-        if (meta != null) {
-            kit.setUnbreakable(meta.isUnbreakable());
-        }
+        plugin.getKitManager().addKit(kit);
+        player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("kit_saved") +
+                " <gray>(" + kitId + ")"));
+        HandlerList.unregisterAll(this);
+    }
+
+    private void handleKitSaveMulti(String msg, String prefix) {
+        String kitId = msg.toLowerCase().replace(" ", "_");
+        AnimaKit kit = new AnimaKit();
+        kit.setId(kitId);
+        kit.setDisplayName(msg);
+        kit.setCreator(player.getName());
+        kit.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        kit.setItems(new ArrayList<>(pendingItems));
 
         plugin.getKitManager().addKit(kit);
         player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("kit_saved") +

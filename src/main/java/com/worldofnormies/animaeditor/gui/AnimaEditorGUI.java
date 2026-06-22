@@ -47,12 +47,16 @@ public class AnimaEditorGUI {
 
     /** Open the kits sub-menu. */
     public void openKits(Player player) {
+        openKits(player, 0);
+    }
+
+    public void openKits(Player player, int page) {
         Inventory inv = buildMenu(KITS_MENU_KEY);
         if (inv == null) {
             player.sendMessage(mm.deserialize("<red>kits_main_menu is missing from AnimaEditorGUI.yml"));
             return;
         }
-        overlayKits(inv);
+        overlayKits(inv, page);
         player.openInventory(inv);
     }
 
@@ -67,7 +71,7 @@ public class AnimaEditorGUI {
             return;
         }
         if (menuKey.equals(KITS_MENU_KEY)) {
-            overlayKits(inv);
+            overlayKits(inv, 0);
         }
         player.openInventory(inv);
     }
@@ -140,24 +144,25 @@ public class AnimaEditorGUI {
 
     /**
      * Replaces every GLASS_PANE slot in the kits menu (in slot order) with
-     * a real kit, in iteration order of KitManager#getAllKits(). Any
-     * leftover GLASS_PANE slots (more slots than kits) are left as-is.
-     *
-     * NOTE: kit ordering depends on KitManager's backing Map. If you need
-     * a stable/sorted order (e.g. alphabetical, by creation date), change
-     * KitManager to use a LinkedHashMap or sort getAllKits() before calling
-     * this method.
+     * a real kit, with pagination.
      */
-    private void overlayKits(Inventory inv) {
-        Collection<AnimaKit> kits = plugin.getKitManager().getAllKits();
-        java.util.Iterator<AnimaKit> it = kits.iterator();
+    private void overlayKits(Inventory inv, int page) {
+        List<AnimaKit> kits = new ArrayList<>(plugin.getKitManager().getAllKits());
+        int slotsPerPage = 0;
+        for (int i = 0; i < inv.getSize(); i++) {
+            ItemStack item = inv.getItem(i);
+            if (item != null && item.getType() == Material.GLASS_PANE) slotsPerPage++;
+        }
+
+        int start = page * slotsPerPage;
+        int currentKitIndex = start;
 
         for (int slot = 0; slot < inv.getSize(); slot++) {
             ItemStack current = inv.getItem(slot);
             if (current == null || current.getType() != Material.GLASS_PANE) continue;
-            if (!it.hasNext()) break;
+            if (currentKitIndex >= kits.size()) break;
 
-            AnimaKit kit = it.next();
+            AnimaKit kit = kits.get(currentKitIndex++);
             Material mat;
             try {
                 mat = Material.valueOf(kit.getMaterial());

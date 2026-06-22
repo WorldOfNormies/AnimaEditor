@@ -41,13 +41,22 @@ public class GuiListener implements Listener {
         String menuKey = resolveMenuKey(plainTitle);
         if (menuKey == null) return; // not one of our GUIs
 
+        // Allow interaction with AIR slots in new_kit_menu
+        if (menuKey.equals("new_kit_menu")) {
+            ConfigurationSection itemSec = plugin.getConfigManager().getGuiConfig()
+                    .getConfigurationSection(menuKey + ".items." + event.getSlot());
+            if (itemSec != null && "AIR".equalsIgnoreCase(itemSec.getString("material"))) {
+                return; // Let player place/take items in the kit grid
+            }
+        }
+
         event.setCancelled(true);
         if (event.getCurrentItem() == null) return;
 
         // Kits menu has dynamic per-kit slots layered on top of the config.
         if (menuKey.equals(AnimaEditorGUI.KITS_MENU_KEY)) {
             handleKitsClick(player, event.getSlot(), event.getCurrentItem(),
-                    event.isRightClick(), event.getView().getTopInventory().getSize());
+                    event.getClick(), event.getView().getTopInventory().getSize());
             return;
         }
 
@@ -164,9 +173,29 @@ public class GuiListener implements Listener {
                 plugin.getServer().getPluginManager().registerEvents(new ChatInputListener(plugin, player, "gradient"), plugin);
             }
 
+            case "CLEAR_KIT_GRID" -> {
+                for (int slot : getKitGridSlots()) {
+                    player.getOpenInventory().setItem(slot, null);
+                }
+            }
+            case "SAVE_NEW_KIT" -> {
+                java.util.List<ItemStack> items = new java.util.ArrayList<>();
+                for (int slot : getKitGridSlots()) {
+                    ItemStack item = player.getOpenInventory().getItem(slot);
+                    if (item != null && item.getType() != Material.AIR) items.add(item);
+                }
+                if (items.isEmpty()) { send(player, prefix + " <red>Kit is empty!"); return; }
+
+                player.closeInventory();
+                send(player, prefix + " <gray>Type a name for this kit in chat:");
+                ChatInputListener listener = new ChatInputListener(plugin, player, "kit_save_multi");
+                listener.setPendingItems(items);
+                plugin.getServer().getPluginManager().registerEvents(listener, plugin);
+            }
+
             // ── Not-yet-implemented systems ──
             case "RESET_ACTIONS", "SAVE_EFFECTS", "APPLY_COLOR_SELECTION", "APPLY_FONT_STYLES",
-                 "CLEAR_KIT_GRID", "EDIT_KIT_META", "SAVE_NEW_KIT", "LOAD_KIT_FIRST_SLOT",
+                 "EDIT_KIT_META", "LOAD_KIT_FIRST_SLOT",
                  "TOGGLE_BOLD", "TOGGLE_ITALIC", "TOGGLE_UNDERLINE" -> {
                 send(player, prefix + " <yellow>This feature (" + action + ") isn't fully implemented yet.");
             }
@@ -239,7 +268,7 @@ public class GuiListener implements Listener {
 
     // ── Kits GUI (dynamic) ───────────────────────────────────────
 
-    private void handleKitsClick(Player player, int slot, ItemStack clicked, boolean rightClick, int invSize) {
+    private void handleKitsClick(Player player, int slot, ItemStack clicked, org.bukkit.event.inventory.ClickType click, int invSize) {
         String prefix = plugin.getConfigManager().getPrefix();
 
         ConfigurationSection itemSec = plugin.getConfigManager().getGuiConfig()
@@ -265,31 +294,26 @@ public class GuiListener implements Listener {
         if (kitIndex < 0 || kitIndex >= kitArr.length) return;
         AnimaKit kit = kitArr[kitIndex];
 
-        if (rightClick) {
+        if (click.isRightClick()) {
             plugin.getKitManager().deleteKit(kit.getId());
             send(player, prefix + " <red>Kit <white>" + kit.getDisplayName() + " <red>deleted.");
             player.closeInventory();
             new AnimaEditorGUI(plugin).openKits(player);
-        } else {
+        } else if (click.isLeftClick()) {
             player.closeInventory();
-            try {
-                Material mat = Material.valueOf(kit.getMaterial());
-                ItemStack item = new ItemStack(mat);
-                ItemMeta meta = item.getItemMeta();
-                if (meta != null && kit.getItemName() != null && !kit.getItemName().isEmpty()) {
-                    meta.displayName(plugin.getGradientManager().parse(kit.getItemName()));
-                }
-                if (meta != null && !kit.getLore().isEmpty()) {
-                    java.util.List<net.kyori.adventure.text.Component> lore = new java.util.ArrayList<>();
-                    for (String line : kit.getLore()) lore.add(plugin.getGradientManager().parse(line));
-                    meta.lore(lore);
-                }
-                if (meta != null) { meta.setUnbreakable(kit.isUnbreakable()); item.setItemMeta(meta); }
-                player.getInventory().addItem(item);
-                send(player, prefix + " " + plugin.getConfigManager().getMessage("kit_loaded"));
-            } catch (Exception e) {
-                send(player, prefix + " <red>Failed to load kit: " + e.getMessage());
+            for (ItemStack item : kit.getItems()) {
+                player.getInventory().addItem(item.clone());
             }
+            send(player, prefix + " " + plugin.getConfigManager().getMessage("kit_loaded"));
+        } else if (click == org.bukkit.event.inventory.ClickType.MIDDLE) {
+            // Edit kit - load items back into editor
+            player.closeInventory();
+            new AnimaEditorGUI(plugin).openMenu(player, "new_kit_menu");
+            int[] grid = getKitGridSlots();
+            for (int i = 0; i < Math.min(kit.getItems().size(), grid.length); i++) {
+                player.getOpenInventory().setItem(grid[i], kit.getItems().get(i).clone());
+            }
+            send(player, prefix + " <gray>Loaded kit into editor.");
         }
     }
 
@@ -317,6 +341,15 @@ public class GuiListener implements Listener {
     }
 
     // ── Helper ─────────────────────────────────────────────────
+
+    private int[] getKitGridSlots() {
+        return new int[]{
+                10, 11, 12, 13, 14, 15, 16,
+                19, 20, 21, 22, 23, 24, 25,
+                28, 29, 30, 31, 32, 33, 34,
+                37, 38, 39, 40, 41, 42, 43
+        };
+    }
 
     private void send(Player player, String miniMessage) {
         player.sendMessage(mm.deserialize(miniMessage));
