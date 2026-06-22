@@ -9,16 +9,16 @@ fill:
 # 1. MAIN MENU
 # ============================================================
 main_menu:
-  title: "<bold><red>[ </red><gradient:#FF0000:#FFFFFF:#0000FF>Anima Editor GUI Main Menu</gradient><red> ]</red></bold>"
+  title: "<bold><gradient:#FF0000:#FFFFFF:#0000FF>Anima Editor GUI Main Menu</gradient></bold>"
   rows: 6
   items:
     # Row 0
     0: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     2: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     4: { material: ENDER_CHEST, name: "<bold><gold>✦ Kits Manager</gold></bold>", action: OPEN_KITS_MENU, permission: anima.kits }
-    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     6: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     8: { material: PLAYER_HEAD, name: "<bold><aqua>✦ Creator Info</aqua></bold>", action: VERSION_INFO, permission: anima.use }
@@ -27,8 +27,8 @@ main_menu:
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     11: { material: NAME_TAG, name: "<bold><white>✦ Rename Item</white></bold>", action: OPEN_NAME_MENU, permission: anima.setname }
-    12: { material: WRITABLE_BOOK, name: "<bold><green>✦ Edit Lore</green></bold>", action: OPEN_LORE_MENU, permission: anima.setlore }
-    13: { material: WRITTEN_BOOK, name: "<bold><green>✦ Edit Description</green></bold>", action: OPEN_DESCRIPTION_MENU, permission: anima.setdescription }
+    12: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    13: { material: WRITABLE_BOOK, name: "<bold><green>✦ Edit Lore</green></bold>", action: OPEN_LORE_MENU, permission: anima.setlore }
     14: { material: GOLDEN_APPLE, name: "<bold><red>✦ Repair Item</red></bold>", action: REPAIR_ITEM, permission: anima.repair }
     15: { material: ENCHANTED_BOOK, name: "<bold><light_purple>✦ Enchantments</light_purple></bold>", action: OPEN_ENCHANT_MENU, permission: anima.setenchant }
     16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -50,9 +50,9 @@ main_menu:
     28: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     29: { material: NETHER_STAR, name: "<bold><gradient:#FF0000:#FFFFFF:#0000FF>✦ Gradient Name</gradient></bold>", action: OPEN_GRADIENT_MENU, permission: anima.setcolor }
     30: { material: WHITE_DYE, name: "<bold><red>✦ Set Color</red></bold>", action: OPEN_COLOR_MENU, permission: anima.setcolor }
-    31: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (1)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
-    32: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (2)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
-    33: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (3)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
+    31: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
+    32: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    33: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     34: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     
@@ -97,10 +97,10 @@ equipment_effect_main_menu:
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     11: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    13: { material: POTION, name: "<bold><dark_red>✦ Permanent Effects</dark_red></bold>", action: OPEN_PERMANENT_EFFECTS_MENU }
-    14: { material: SPLASH_POTION, name: "<bold><gold>✦ Interval Effects</gold></bold>", action: OPEN_INTERVAL_EFFECTS_MENU }
-    15: { material: LINGERING_POTION, name: "<bold><yellow>✦ Spread Effects</yellow></bold>", action: OPEN_SPREAD_EFFECTS_MENU }
+    12: { material: POTION, name: "<bold><dark_red>✦ Permanent Effects</dark_red></bold>", action: OPEN_PERMANENT_EFFECTS_MENU }
+    13: { material: SPLASH_POTION, name: "<bold><gold>✦ Interval Effects</gold></bold>", action: OPEN_INTERVAL_EFFECTS_MENU }
+    14: { material: LINGERING_POTION, name: "<bold><yellow>✦ Spread Effects</yellow></bold>", action: OPEN_SPREAD_EFFECTS_MENU }
+    15: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     18: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
@@ -131,7 +131,7 @@ equipment_effect_permanent_menu:
     8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    11: { material: POTION, name: "<bold><red>✦ Select Permanent Potion Effect</red></bold>" }
+    11: { material: POTION, name: "<bold><red>✦ Potion of Healing</red></bold>", potion_type: HEALING }
     12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     13: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -166,7 +166,7 @@ equipment_effect_interval_menu:
     8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    11: { material: SPLASH_POTION, name: "<bold><yellow>✦ Select Interval Potion Effect</yellow></bold>" }
+    11: { material: SPLASH_POTION, name: "<bold><gold>✦ Splash Potion of Fire Resistance</gold></bold>", potion_type: FIRE_RESISTANCE }
     12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     13: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Duration / Amplifier</aqua></bold>" }
     14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -201,7 +201,7 @@ equipment_effect_spread_menu:
     8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    11: { material: LINGERING_POTION, name: "<bold><yellow>✦ Select Spread Potion Effect</yellow></bold>" }
+    11: { material: LINGERING_POTION, name: "<bold><yellow>✦ Lingering Potion of Leaping</yellow></bold>", potion_type: LEAPING }
     12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     13: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Settings</aqua></bold>" }
     14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -226,7 +226,7 @@ kits_main_menu:
   rows: 6
   items:
     # Outer frame
-    0: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    0: { material: CHEST, name: "<bold><aqua>✦ Load Kit (Quick)</aqua></bold>", action: LOAD_KIT_FIRST_SLOT }
     1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -238,7 +238,7 @@ kits_main_menu:
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     
     # Active kit icon preview space
-    10: { material: CHEST, name: "<bold><yellow>✦ Kit #1</yellow></bold>" }
+    10: { material: CHEST, name: "<bold><yellow>✦ Create/Edit Kit</yellow></bold>", action: OPEN_NEW_KIT_MENU }
     
     # Grid interior: Filled out with light clear glass pane layers
     11: { material: GLASS_PANE, name: " " }
@@ -288,10 +288,10 @@ kits_main_menu:
     53: { material: BLACK_STAINED_GLASS_PANE, name: " " }
 
 # ============================================================
-# 7. NEW KIT MENU
+# 7. KIT EDITOR / NEW KIT MENU
 # ============================================================
 new_kit_menu:
-  title: "<bold><green>[ New Kit ]</green></bold>"
+  title: "Kit Editor"
   rows: 6
   items:
     0: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -305,53 +305,53 @@ new_kit_menu:
     8: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     
-    # Internal user kit-creation slots are left as empty GLASS_PANES
-    10: { material: GLASS_PANE, name: " " }
-    11: { material: GLASS_PANE, name: " " }
-    12: { material: GLASS_PANE, name: " " }
-    13: { material: GLASS_PANE, name: " " }
-    14: { material: GLASS_PANE, name: " " }
-    15: { material: GLASS_PANE, name: " " }
-    16: { material: GLASS_PANE, name: " " }
+    # Internal user kit slots changed to AIR so items can be inserted/edited
+    10: { material: AIR }
+    11: { material: AIR }
+    12: { material: AIR }
+    13: { material: AIR }
+    14: { material: AIR }
+    15: { material: AIR }
+    16: { material: AIR }
     17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    19: { material: GLASS_PANE, name: " " }
-    20: { material: GLASS_PANE, name: " " }
-    21: { material: GLASS_PANE, name: " " }
-    22: { material: GLASS_PANE, name: " " }
-    23: { material: GLASS_PANE, name: " " }
-    24: { material: GLASS_PANE, name: " " }
-    25: { material: GLASS_PANE, name: " " }
+    19: { material: AIR }
+    20: { material: AIR }
+    21: { material: AIR }
+    22: { material: AIR }
+    23: { material: AIR }
+    24: { material: AIR }
+    25: { material: AIR }
     26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    28: { material: GLASS_PANE, name: " " }
-    29: { material: GLASS_PANE, name: " " }
-    30: { material: GLASS_PANE, name: " " }
-    31: { material: GLASS_PANE, name: " " }
-    32: { material: GLASS_PANE, name: " " }
-    33: { material: GLASS_PANE, name: " " }
-    34: { material: GLASS_PANE, name: " " }
+    28: { material: AIR }
+    29: { material: AIR }
+    30: { material: AIR }
+    31: { material: AIR }
+    32: { material: AIR }
+    33: { material: AIR }
+    34: { material: AIR }
     35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    37: { material: GLASS_PANE, name: " " }
-    38: { material: GLASS_PANE, name: " " }
-    39: { material: GLASS_PANE, name: " " }
-    40: { material: GLASS_PANE, name: " " }
-    41: { material: GLASS_PANE, name: " " }
-    42: { material: GLASS_PANE, name: " " }
-    43: { material: GLASS_PANE, name: " " }
+    37: { material: AIR }
+    38: { material: AIR }
+    39: { material: AIR }
+    40: { material: AIR }
+    41: { material: AIR }
+    42: { material: AIR }
+    43: { material: AIR }
     44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     
     # Footer Row
     45: { material: RED_BUNDLE, name: "<bold><red>✦ Cancel and Go Back</red></bold>", action: OPEN_KITS_MENU }
     46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    47: { material: RED_STAINED_GLASS_PANE, name: "<bold><red>✦ Clear Grid</red></bold>" }
+    47: { material: RED_STAINED_GLASS_PANE, name: "<bold><red>✦ Clear Grid</red></bold>", action: CLEAR_KIT_GRID }
     48: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    49: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Kit Meta / Name</aqua></bold>" }
+    49: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Kit Meta / Name</aqua></bold>", action: EDIT_KIT_META }
     50: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    51: { material: LIME_STAINED_GLASS_PANE, name: "<bold><green>✦ Save Kit</green></bold>" }
+    51: { material: LIME_STAINED_GLASS_PANE, name: "<bold><green>✦ Save Kit</green></bold>", action: SAVE_NEW_KIT }
     52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm & Close</green></bold>" }
+    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm & Close</green></bold>", action: OPEN_KITS_MENU }
 
 # ============================================================
 # 8. NAME FONT STYLE MENU
@@ -360,7 +360,7 @@ name_font_style_menu:
   title: "<bold><dark_gray>[ Name Font Style Menu ]</dark_gray></bold>"
   rows: 3
   items:
-    0: { material: WRITTEN_BOOK, name: "<bold><white>✦ Write/Apply Item Name Text</white></bold>", action: CHAT_INPUT_NAME }
+    0: { material: WRITABLE_BOOK, name: "<bold><white>✦ Write/Apply Item Name Text</white></bold>", action: CHAT_INPUT_NAME }
     1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -371,11 +371,11 @@ name_font_style_menu:
     8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    11: { material: WRITABLE_BOOK, name: "<bold><bold>✦ Toggle Bold</bold></bold>" }
-    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    13: { material: IRON_INGOT, name: "<bold><italic>✦ Toggle Italic</italic></bold>" }
-    14: { material: STRING, name: "<bold><underlined>✦ Toggle Underline</underlined></bold>" }
-    15: { material: STICK, name: "<bold><obfuscated>✦ Toggle Magic / Obfuscated</obfuscated></bold>" }
+    11: { material: IRON_INGOT, name: "<bold><bold>✦ Toggle Bold</bold></bold>", action: TOGGLE_BOLD }
+    12: { material: STICK, name: "<bold><italic>✦ Toggle Italic</italic></bold>", action: TOGGLE_ITALIC }
+    13: { material: STRING, name: "<bold><underlined>✦ Toggle Underline</underlined></bold>", action: TOGGLE_UNDERLINE }
+    14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    15: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     18: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
@@ -386,7 +386,7 @@ name_font_style_menu:
     23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Apply Font Styles</green></bold>" }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Apply Font Styles</green></bold>", action: APPLY_FONT_STYLES }
 
 # ============================================================
 # 9. SET ARMOR TRIM MAIN MENU
@@ -499,7 +499,7 @@ set_color_menu:
     39: { material: MAGENTA_DYE, name: "<light_purple>Magenta Dye</light_purple>" }
     40: { material: PINK_DYE, name: "<light_purple>Pink Dye</light_purple>" }
     41: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    42: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Custom HEX Code Input</aqua></bold>" }
+    42: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Custom HEX Code Input</aqua></bold>", action: OPEN_GRADIENT_MENU }
     43: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     45: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
@@ -510,4 +510,4 @@ set_color_menu:
     50: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     51: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm Color Selection</green></bold>" }
+    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm Color Selection</green></bold>", action: APPLY_COLOR_SELECTION }

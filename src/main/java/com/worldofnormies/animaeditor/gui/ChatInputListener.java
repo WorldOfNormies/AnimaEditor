@@ -61,6 +61,8 @@ public class ChatInputListener implements Listener {
                 case "name" -> handleName(msg, prefix);
                 case "lore" -> handleLore(msg, prefix);
                 case "kit_save" -> handleKitSave(msg, prefix);
+                case "enchant" -> handleEnchant(msg, prefix);
+                case "gradient" -> handleGradient(msg, prefix);
             }
         });
     }
@@ -136,6 +138,59 @@ public class ChatInputListener implements Listener {
         plugin.getKitManager().addKit(kit);
         player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("kit_saved") +
                 " <gray>(" + kitId + ")"));
+        HandlerList.unregisterAll(this);
+    }
+
+    private void handleEnchant(String msg, String prefix) {
+        String[] parts = msg.split(" ");
+        if (parts.length < 2) {
+            player.sendMessage(mm.deserialize(prefix + " <red>Usage: <enchantment> <level>"));
+            return;
+        }
+        com.worldofnormies.animaeditor.manager.AnimaEnchantManager em = new com.worldofnormies.animaeditor.manager.AnimaEnchantManager(plugin);
+        org.bukkit.enchantments.Enchantment ench = em.resolve(parts[0]);
+        if (ench == null) {
+            player.sendMessage(mm.deserialize(prefix + " <red>Unknown enchantment: " + parts[0]));
+            return;
+        }
+        int level;
+        try {
+            level = Integer.parseInt(parts[1]);
+        } catch (NumberFormatException e) {
+            player.sendMessage(mm.deserialize(prefix + " <red>Invalid level: " + parts[1]));
+            return;
+        }
+        ItemStack held = player.getInventory().getItemInMainHand();
+        if (held.getType() != org.bukkit.Material.AIR) {
+            em.apply(held, ench, level);
+            player.sendMessage(mm.deserialize(prefix + " <green>Applied " + parts[0] + " level " + level));
+        } else {
+            player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("no_item_in_hand")));
+        }
+        HandlerList.unregisterAll(this);
+    }
+
+    private void handleGradient(String msg, String prefix) {
+        String[] parts = msg.split(" ");
+        if (parts.length < 2) {
+            player.sendMessage(mm.deserialize(prefix + " <red>Usage: <color1> <color2>... <text>"));
+            return;
+        }
+        String text = parts[parts.length - 1];
+        String[] colors = java.util.Arrays.copyOfRange(parts, 0, parts.length - 1);
+
+        String miniMessage = plugin.getGradientManager().buildGradient(colors, text);
+        ItemStack held = player.getInventory().getItemInMainHand();
+        if (held.getType() != org.bukkit.Material.AIR) {
+            ItemMeta meta = held.getItemMeta();
+            if (meta != null) {
+                meta.displayName(plugin.getGradientManager().parse(miniMessage));
+                held.setItemMeta(meta);
+                player.sendMessage(mm.deserialize(prefix + " <green>Gradient name applied!"));
+            }
+        } else {
+            player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("no_item_in_hand")));
+        }
         HandlerList.unregisterAll(this);
     }
 }

@@ -1,82 +1,58 @@
-# 🎨 AnimaEditor
+# AnimaEditor
 
-**AnimaEditor** is a powerful Minecraft plugin (targeting 26.1.2 and above) that provides a comprehensive in-game GUI for editing items. It supports advanced features like gradient-styled names, custom lore, glow control, and unrestricted enchantment levels.
+Advanced Item Editor Plugin for Minecraft (Paper/Spigot 1.21.4+)
 
----
+## Features
 
-## 🚀 Features
+- **Professional GUI**: 54-slot standard layout with intuitive navigation.
+- **Advanced Renaming**: Support for MiniMessage, Hex colors, and multi-step gradients.
+- **Lore Management**: Add and manage lore lines with ease.
+- **Unrestricted Enchantments**: Apply any enchantment at any level to any item.
+- **Equipment Effects**: Permanent, Interval, and Spread potion effects on equipped items.
+- **Kits Manager**: Save, load, and manage custom item kits with a dedicated GUI.
+- **Armor Trims & Shields**: Customize armor trims and shield patterns.
+- **Particle Effects**: Add custom particles to equipped items via NBT.
+- **Glow & Unbreakable**: Toggle item glow and unbreakable status.
+- **Repair**: Instantly repair items in hand.
 
-*   **Gradient Names**: Create beautiful item names with 1, 2, or 3 color stops.
-*   **Custom Lore & Descriptions**: Easily add multi-line lore and descriptions directly from chat.
-*   **Glow Control**: Toggle the enchantment glint on any item, regardless of its enchants.
-*   **Unrestricted Enchantments**: Add any enchantment at any level (bypassing vanilla limits).
-*   **Kits System**: Save and load custom item kits via a dedicated GUI.
-*   **Unbreakable Toggle**: Make items unbreakable with a single click.
-*   **Cross-Platform**: Optimized for **Paper**, **Spigot**, and **Bukkit**. Fully compatible with **Geyser**.
+## Commands
 
----
+- `/anima` — Open the main editor GUI.
+- `/anima name set <text>` — Rename the held item.
+- `/anima lore set <text>` — Add a lore line.
+- `/anima color name|lore <colors...> <text>` — Apply gradients or colors.
+- `/anima enchant add <enchantment> <level>` — Add an enchantment (no caps!).
+- `/anima enchant remove <enchantment>` — Remove a specific enchantment.
+- `/anima glow true|false` — Toggle enchantment glint.
+- `/anima unbreakable true|false` — Toggle unbreakable status.
+- `/anima repair` — Repair held item.
+- `/anima clearall` — Remove all modifications.
+- `/anima kits save|load|list|delete <name>` — Manage item kits.
+- `/anima give <player> <kit>` — Give a kit to a player.
+- `/anima reload` — Fully reload the plugin and its configs.
 
-## 🎮 How to Use
+## Permissions
 
-Type `/anima` while holding an item to open the main editor menu.
+- `anima.use` — Basic access to /anima and main GUI.
+- `anima.setname` — Permission to rename items.
+- `anima.setlore` — Permission to edit lore.
+- `anima.setcolor` — Permission to apply colors and gradients.
+- `anima.setenchant` — Permission to manage enchantments.
+- `anima.setglow` — Permission to toggle glow.
+- `anima.setunbreakable` — Permission to toggle unbreakable status.
+- `anima.repair` — Permission to repair items.
+- `anima.clear` — Permission to clear modifications.
+- `anima.kits` — Permission to use the kits system.
+- `anima.effect` — Permission to manage equipment effects.
+- `anima.particle` — Permission to manage particle effects.
+- `anima.banner` — Permission to manage shield patterns.
+- `anima.reload` — Permission to reload the plugin.
+- `anima.*` — Grant all plugin permissions.
 
-### Main Menu Layout
-- **Name Tag**: Opens the Name submenu (Bold, Underline, Edit Text).
-- **Book (Lore)**: Set item lore via chat. Type `done` when finished.
-- **Writable Book (Description)**: Set item description via chat.
-- **Item Frames**: Toggle enchantment glow on/off.
-- **Enchanting Table**: Add any enchantment + level (e.g., `sharpness 15`).
-- **Hanging Sign**: Cycle between 1, 2, or 3 gradient color stops.
-- **Dye Swatches**: Choose colors for your name gradient.
-- **Netherite Ingot**: Toggle the Unbreakable attribute.
-- **Lime Pane**: **Apply changes** to the item in your hand.
-- **Red Pane**: Discard all changes.
+## Version 1.1.0 - What's New
 
----
-
-## 🛠️ Commands & Permissions
-
-### Commands
-*   `/anima` - Opens the editor for the held item.
-*   `/anima kits` - Opens the kit storage GUI.
-*   `/anima enchant <type> <level>` - Directly add an enchantment.
-*   `/anima name <text>` - Quickly set a name using current gradient settings.
-*   `/anima clear <color|name|enchant|all>` - Clear specific item properties.
-
-### Permissions
-*   `anima.use`: Allows use of the editor GUI (Default: OP).
-*   `anima.admin`: Allows management of kits (Default: OP).
-*   `anima.enchant`: Allows adding unrestricted enchantments (Default: OP).
-
----
-
-## 📦 Compatibility & Versions
-
-This plugin is designed to run on Minecraft version **26.1.2 and higher**. It is built for:
-- **Paper**: Native support for Adventure API.
-- **Spigot**: Includes shaded dependencies for full feature support.
-- **Bukkit**: Compatible with classic Bukkit environments.
-- **Geyser**: Fully tested and optimized for Bedrock players via Geyser.
-
----
-
-## 🏗️ Build & Installation
-
-### Download
-You can download the latest builds from the [Actions](https://github.com/Anima-SMP/AnimaEditor/actions) tab:
-*   `AnimaEditor-Paper-26.1.2.jar`
-*   `AnimaEditor-Spigot-26.1.2.jar`
-*   `AnimaEditor-Bukkit-26.1.2.jar`
-
-### Manual Build
-If you wish to build the plugin yourself, run:
-```bash
-./gradlew assemble
-```
-The JAR files will be located in `build/libs/`.
-
-### Installation
-1.  Download the JAR corresponding to your server platform.
-2.  Drop the JAR into your server's `plugins/` folder.
-3.  Restart your server.
-4.  The plugin will automatically create an `AnimaEditor` folder with `config.yml` and `kits.yml`.
+- **Rebranded to AnimaEditor**.
+- **Refactored structure**: Cleaner package organization.
+- **Improved GUI**: Better centering, updated materials, and action sounds.
+- **Enhanced Commands**: Rename `/anima gradient` to `/anima color`.
+- **Bug Fixes**: Fixed Gradle build issues and configuration reloading.

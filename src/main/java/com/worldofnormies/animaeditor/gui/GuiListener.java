@@ -64,6 +64,15 @@ public class GuiListener implements Listener {
         String action = itemSec.getString("action", null);
         if (action != null) {
             handleAction(player, action.toUpperCase());
+            playActionSound(player, itemSec.getString("material", ""));
+        }
+    }
+
+    private void playActionSound(Player player, String material) {
+        if (material.contains("RED_BUNDLE")) {
+            player.playSound(player.getLocation(), org.bukkit.Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
+        } else if (material.contains("GREEN_BUNDLE") || material.contains("LIME_BUNDLE")) {
+            player.playSound(player.getLocation(), org.bukkit.Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
         }
     }
 
@@ -135,16 +144,31 @@ public class GuiListener implements Listener {
                 plugin.getServer().getPluginManager().registerEvents(new ChatInputListener(plugin, player, "lore"), plugin);
             }
             case "OPEN_NAME_FONT_MENU", "OPEN_EFFECT_MAIN_MENU", "OPEN_PERMANENT_EFFECTS_MENU",
-                 "OPEN_INTERVAL_EFFECTS_MENU", "OPEN_SPREAD_EFFECTS_MENU" -> {
+                 "OPEN_INTERVAL_EFFECTS_MENU", "OPEN_SPREAD_EFFECTS_MENU",
+                 "OPEN_SHIELD_MENU", "OPEN_PARTICLE_MENU", "OPEN_COLOR_MENU", "OPEN_ARMOR_TRIM_MENU" -> {
                 player.closeInventory();
                 new AnimaEditorGUI(plugin).openMenu(player, lowerMenuKeyFor(action));
             }
 
-            // ── Not-yet-implemented systems (no backing manager exists yet) ──
-            case "OPEN_DESCRIPTION_MENU", "OPEN_ENCHANT_MENU", "OPEN_SHIELD_MENU",
-                 "OPEN_PARTICLE_MENU", "OPEN_GRADIENT_MENU", "OPEN_COLOR_MENU",
-                 "RESET_ACTIONS", "SAVE_EFFECTS" -> {
-                send(player, prefix + " <yellow>This feature isn't implemented yet.");
+            case "OPEN_ENCHANT_MENU" -> {
+                player.closeInventory();
+                if (!hasItem) { send(player, prefix + " " + plugin.getConfigManager().getMessage("no_item_in_hand")); return; }
+                send(player, prefix + " <gray>Type the enchantment name and level in chat (e.g. <white>sharpness 10<gray>). Type <white>cancel <gray>to abort.");
+                plugin.getServer().getPluginManager().registerEvents(new ChatInputListener(plugin, player, "enchant"), plugin);
+            }
+
+            case "OPEN_GRADIENT_MENU" -> {
+                player.closeInventory();
+                if (!hasItem) { send(player, prefix + " " + plugin.getConfigManager().getMessage("no_item_in_hand")); return; }
+                send(player, prefix + " <gray>Type gradient colors and text (e.g. <white>#FF0000 #00FF00 Hello<gray>). Type <white>cancel <gray>to abort.");
+                plugin.getServer().getPluginManager().registerEvents(new ChatInputListener(plugin, player, "gradient"), plugin);
+            }
+
+            // ── Not-yet-implemented systems ──
+            case "RESET_ACTIONS", "SAVE_EFFECTS", "APPLY_COLOR_SELECTION", "APPLY_FONT_STYLES",
+                 "CLEAR_KIT_GRID", "EDIT_KIT_META", "SAVE_NEW_KIT", "LOAD_KIT_FIRST_SLOT",
+                 "TOGGLE_BOLD", "TOGGLE_ITALIC", "TOGGLE_UNDERLINE" -> {
+                send(player, prefix + " <yellow>This feature (" + action + ") isn't fully implemented yet.");
             }
 
             // ── Direct item actions ──────────────────────────
@@ -206,6 +230,10 @@ public class GuiListener implements Listener {
         mapping.put("OPEN_PERMANENT_EFFECTS_MENU", "equipment_effect_permanent_menu");
         mapping.put("OPEN_INTERVAL_EFFECTS_MENU", "equipment_effect_interval_menu");
         mapping.put("OPEN_SPREAD_EFFECTS_MENU", "equipment_effect_spread_menu");
+        mapping.put("OPEN_SHIELD_MENU", "open_shield_menu"); // Added placeholder
+        mapping.put("OPEN_PARTICLE_MENU", "open_particle_menu"); // Added placeholder
+        mapping.put("OPEN_COLOR_MENU", "set_color_menu");
+        mapping.put("OPEN_ARMOR_TRIM_MENU", "set_armor_trim_main_menu");
         return mapping.getOrDefault(action, "main_menu");
     }
 

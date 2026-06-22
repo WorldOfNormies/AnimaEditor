@@ -31,8 +31,8 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
     private final MiniMessage mm = MiniMessage.miniMessage();
 
     private static final List<String> SUBCOMMANDS = Arrays.asList(
-            "help", "name", "lore", "description", "enchant", "trim",
-            "glow", "unbreakable", "gradient", "effect", "particle",
+            "help", "name", "lore", "enchant", "trim",
+            "glow", "unbreakable", "color", "effect", "particle",
             "kits", "repair", "permission", "give", "clearall",
             "destroy", "reload"
     );
@@ -67,7 +67,8 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
             case "help" -> handleHelp(player, prefix);
             case "name" -> handleName(player, args, prefix);
             case "lore" -> handleLore(player, args, prefix);
-            case "gradient" -> handleGradient(player, args, prefix);
+            case "color" -> handleColor(player, args, prefix);
+            case "enchant" -> handleEnchant(player, args, prefix);
             case "glow" -> handleGlow(player, args, prefix);
             case "unbreakable" -> handleUnbreakable(player, args, prefix);
             case "repair" -> handleRepair(player, prefix);
@@ -90,7 +91,9 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(mm.deserialize("<dark_gray> /anima <white>— Open the item editor GUI"));
         player.sendMessage(mm.deserialize("<dark_gray> /anima name set <text> <white>— Rename held item"));
         player.sendMessage(mm.deserialize("<dark_gray> /anima lore set <text> <white>— Set lore on held item"));
-        player.sendMessage(mm.deserialize("<dark_gray> /anima gradient name <preset|#HEX> <text> <white>— Apply gradient"));
+        player.sendMessage(mm.deserialize("<dark_gray> /anima color name <preset|#HEX> <text> <white>— Apply color/gradient"));
+        player.sendMessage(mm.deserialize("<dark_gray> /anima enchant add <enchantment> <level> <white>— Add enchantment"));
+        player.sendMessage(mm.deserialize("<dark_gray> /anima enchant remove <enchantment> <white>— Remove enchantment"));
         player.sendMessage(mm.deserialize("<dark_gray> /anima glow true|false <white>— Toggle glow"));
         player.sendMessage(mm.deserialize("<dark_gray> /anima unbreakable true|false <white>— Toggle unbreakable"));
         player.sendMessage(mm.deserialize("<dark_gray> /anima repair <white>— Repair held item"));
@@ -178,7 +181,7 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("lore_updated")));
     }
 
-    private void handleGradient(Player player, String[] args, String prefix) {
+    private void handleColor(Player player, String[] args, String prefix) {
         if (!player.hasPermission("anima.setcolor")) {
             player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("no_permission")));
             return;
@@ -191,14 +194,14 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 4) {
-            player.sendMessage(mm.deserialize(prefix + " <red>Usage: /anima gradient name <preset|#HEX1 #HEX2...> <text>"));
+            player.sendMessage(mm.deserialize(prefix + " <red>Usage: /anima color name|lore <preset|#HEX1 #HEX2...> <text>"));
             player.sendMessage(mm.deserialize("<gray>Available presets: <white>" +
                     String.join(", ", plugin.getGradientManager().getPresetNames())));
             return;
         }
 
         GradientManager gm = plugin.getGradientManager();
-        String target = args[1].toLowerCase(); // name / lore / desc
+        String target = args[1].toLowerCase(); // name / lore
         String presetOrHex = args[2];
         String text = String.join(" ", Arrays.copyOfRange(args, 3, args.length));
 
@@ -225,6 +228,66 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
 
         item.setItemMeta(meta);
         player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("gradient_applied")));
+    }
+
+    private void handleEnchant(Player player, String[] args, String prefix) {
+        if (!player.hasPermission("anima.setenchant")) {
+            player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("no_permission")));
+            return;
+        }
+
+        ItemStack item = getHeldItem(player);
+        if (item == null) {
+            player.sendMessage(mm.deserialize(prefix + " " + plugin.getConfigManager().getMessage("no_item_in_hand")));
+            return;
+        }
+
+        if (args.length < 3) {
+            player.sendMessage(mm.deserialize(prefix + " <red>Usage: /anima enchant <add|remove|clear> [enchantment] [level]"));
+            return;
+        }
+
+        String action = args[1].toLowerCase();
+        com.worldofnormies.animaeditor.manager.AnimaEnchantManager em = new com.worldofnormies.animaeditor.manager.AnimaEnchantManager(plugin);
+
+        switch (action) {
+            case "add" -> {
+                if (args.length < 4) {
+                    player.sendMessage(mm.deserialize(prefix + " <red>Usage: /anima enchant add <enchantment> <level>"));
+                    return;
+                }
+                org.bukkit.enchantments.Enchantment ench = em.resolve(args[2]);
+                if (ench == null) {
+                    player.sendMessage(mm.deserialize(prefix + " <red>Unknown enchantment: " + args[2]));
+                    return;
+                }
+                int level;
+                try {
+                    level = Integer.parseInt(args[3]);
+                } catch (NumberFormatException e) {
+                    player.sendMessage(mm.deserialize(prefix + " <red>Invalid level: " + args[3]));
+                    return;
+                }
+                em.apply(item, ench, level);
+                player.sendMessage(mm.deserialize(prefix + " <green>Applied enchantment!"));
+            }
+            case "remove" -> {
+                org.bukkit.enchantments.Enchantment ench = em.resolve(args[2]);
+                if (ench == null) {
+                    player.sendMessage(mm.deserialize(prefix + " <red>Unknown enchantment: " + args[2]));
+                    return;
+                }
+                if (em.remove(item, ench)) {
+                    player.sendMessage(mm.deserialize(prefix + " <green>Removed enchantment!"));
+                } else {
+                    player.sendMessage(mm.deserialize(prefix + " <red>Item didn't have that enchantment."));
+                }
+            }
+            case "clear" -> {
+                em.clear(item);
+                player.sendMessage(mm.deserialize(prefix + " <green>Cleared all enchantments!"));
+            }
+        }
     }
 
     private void handleGlow(Player player, String[] args, String prefix) {
@@ -494,17 +557,24 @@ public class AnimaCommand implements CommandExecutor, TabCompleter {
             return switch (sub) {
                 case "name" -> List.of("set", "remove");
                 case "lore" -> List.of("set", "remove");
+                case "enchant" -> List.of("add", "remove", "clear");
                 case "glow", "unbreakable" -> List.of("true", "false");
                 case "kits" -> List.of("save", "load", "list", "delete");
-                case "gradient" -> List.of("name", "lore", "desc");
+                case "color" -> List.of("name", "lore");
                 default -> completions;
             };
         }
 
-        if (args.length == 3 && sub.equals("gradient")) {
+        if (args.length == 3 && sub.equals("color")) {
             List<String> options = new ArrayList<>(plugin.getGradientManager().getPresetNames());
             options.add("#FF0000");
             return options.stream().filter(s -> s.startsWith(args[2])).collect(Collectors.toList());
+        }
+
+        if (args.length == 3 && sub.equals("enchant")) {
+             return new com.worldofnormies.animaeditor.manager.AnimaEnchantManager(plugin).allKeys().stream()
+                     .filter(k -> k.startsWith(args[2].toLowerCase()))
+                     .collect(Collectors.toList());
         }
 
         if (args.length == 2 && (sub.equals("give") || sub.equals("permission"))) {

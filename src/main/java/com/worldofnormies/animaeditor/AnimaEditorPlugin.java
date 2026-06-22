@@ -18,6 +18,8 @@ public class AnimaEditorPlugin extends JavaPlugin {
     private KitManager kitManager;
     private PermissionManager permissionManager;
     private GradientManager gradientManager;
+    private com.worldofnormies.animaeditor.manager.AnimaEffectManager effectManager;
+    private com.worldofnormies.animaeditor.manager.AnimaParticleManager particleManager;
 
     @Override
     public void onEnable() {
@@ -46,6 +48,12 @@ public class AnimaEditorPlugin extends JavaPlugin {
         permissionManager = new PermissionManager(this);
         permissionManager.loadAll();
 
+        effectManager = new com.worldofnormies.animaeditor.manager.AnimaEffectManager(this);
+        effectManager.start();
+
+        particleManager = new com.worldofnormies.animaeditor.manager.AnimaParticleManager(this);
+        particleManager.start();
+
         // Register command
         Objects.requireNonNull(getCommand("anima"))
                 .setExecutor(new AnimaCommand(this));
@@ -62,6 +70,8 @@ public class AnimaEditorPlugin extends JavaPlugin {
     public void onDisable() {
         if (kitManager != null) kitManager.saveAll();
         if (permissionManager != null) permissionManager.saveAll();
+        if (effectManager != null) effectManager.stop();
+        if (particleManager != null) particleManager.stop();
         getLogger().info("AnimaEditor disabled.");
     }
 
@@ -78,6 +88,14 @@ public class AnimaEditorPlugin extends JavaPlugin {
         gradientManager.reload();
         kitManager.loadAll();
         permissionManager.loadAll();
+        if (effectManager != null) {
+            effectManager.stop();
+            effectManager.start();
+        }
+        if (particleManager != null) {
+            particleManager.stop();
+            particleManager.start();
+        }
     }
 
     // ── Getters ───────────────────────────────────────────────
@@ -87,4 +105,6 @@ public class AnimaEditorPlugin extends JavaPlugin {
     public KitManager getKitManager()             { return kitManager; }
     public PermissionManager getPermissionManager(){ return permissionManager; }
     public GradientManager getGradientManager()   { return gradientManager; }
+    public com.worldofnormies.animaeditor.manager.AnimaEffectManager getEffectManager() { return effectManager; }
+    public com.worldofnormies.animaeditor.manager.AnimaParticleManager getParticleManager() { return particleManager; }
 }
