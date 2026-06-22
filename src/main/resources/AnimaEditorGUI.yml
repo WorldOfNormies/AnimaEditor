@@ -392,17 +392,17 @@ name_font_style_menu:
 # 9. SET ARMOR TRIM MAIN MENU
 # ============================================================
 set_armor_trim_main_menu:
-  title: "<bold><aqua>[ Set Armor Trim Main Menu ]</aqua></bold>"
+  title: "<bold><white>[ Set Armor Trim Main Menu ]</white></bold>"
   rows: 6
   items:
-    0: { material: NAME_TAG, name: "<bold><gray>Trim Status Info</gray></bold>" }
-    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    2: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    0: { material: SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<bold><gray>Trim Status Info</gray></bold>" }
+    1: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     3: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     4: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     5: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    6: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
@@ -433,21 +433,21 @@ set_armor_trim_main_menu:
     35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     37: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    38: { material: NETHERITE_UPGRADE_SMITHING_TEMPLATE, name: "<gold>Netherite Upgrade</gold>" }
-    39: { material: TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Tide Armor Trim</aqua>" }
-    40: { material: SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Spire Armor Trim</aqua>" }
-    41: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    38: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    39: { material: NETHERITE_UPGRADE_SMITHING_TEMPLATE, name: "<gold>Netherite Upgrade</gold>" }
+    40: { material: TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Tide Armor Trim</aqua>" }
+    41: { material: SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Spire Armor Trim</aqua>" }
     42: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     43: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     45: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
-    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
-    47: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    46: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    47: { material: BLACK_STAINED_GLASS_PANE, name: " " }
     48: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     49: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     50: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    51: { material: WHITE_STAINED_GLASS_PANE, name: " " }
-    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    51: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    52: { material: WHITE_STAINED_GLASS_PANE, name: " " }
     53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Apply Selected Trim</green></bold>" }
 
 # ============================================================
