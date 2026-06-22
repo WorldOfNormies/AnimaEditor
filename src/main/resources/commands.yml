@@ -1,0 +1,156 @@
+# ============================================================
+#   AnimaEditor - Commands Configuration (commands.yml)
+#
+#   Configure command aliases, enable/disable sub-commands,
+#   and set per-command permission overrides.
+# ============================================================
+
+# ── Main Command ──────────────────────────────────────────────
+main_command:
+  # The primary command name
+  command: "anima"
+  # Aliases players can use instead of /anima
+  aliases:
+    - "ae"
+    - "editor"
+    - "itemedit"
+  # Permission required to use /anima at all
+  base_permission: "anima.use"
+
+# ── Sub-Commands ──────────────────────────────────────────────
+# Each sub-command can be individually enabled/disabled,
+# have its alias changed, and have its permission overridden.
+subcommands:
+
+  help:
+    enabled: true
+    aliases: [ "?" ]
+    permission: "anima.use"
+    description: "Shows all available commands"
+
+  name:
+    enabled: true
+    aliases: [ "rename", "n" ]
+    permission: "anima.setname"
+    description: "Rename the item in hand"
+    # Usage hint shown in /anima help
+    usage: "/anima name <set|edit|remove> <text>"
+
+  lore:
+    enabled: true
+    aliases: [ "l" ]
+    permission: "anima.setlore"
+    description: "Edit the item's lore"
+    usage: "/anima lore <set|remove> [line] <text>"
+
+  description:
+    enabled: true
+    aliases: [ "desc", "d" ]
+    permission: "anima.setdescription"
+    description: "Edit the item's description component"
+    usage: "/anima description <addline|clear>"
+
+  enchant:
+    enabled: true
+    aliases: [ "ench", "e" ]
+    permission: "anima.setenchant"
+    description: "Add or remove enchantments"
+    usage: "/anima enchant <add|remove|edit|clear> [enchant] [level]"
+
+  trim:
+    enabled: true
+    aliases: [ "armortrim", "t" ]
+    permission: "anima.armortrim"
+    description: "Apply or remove armor trims"
+    usage: "/anima trim <set|remove> [trim_type] [material]"
+
+  glow:
+    enabled: true
+    aliases: [ "g" ]
+    permission: "anima.setglow"
+    description: "Toggle fake enchant glow"
+    usage: "/anima glow <true|false>"
+
+  unbreakable:
+    enabled: true
+    aliases: [ "unbreak", "ub" ]
+    permission: "anima.setunbreakable"
+    description: "Toggle unbreakable flag"
+    usage: "/anima unbreakable <true|false>"
+
+  gradient:
+    enabled: true
+    aliases: [ "grad", "gr" ]
+    permission: "anima.setcolor"
+    description: "Apply a gradient to the item name"
+    usage: "/anima gradient <name|lore|desc> <preset|#HEX1 #HEX2 ...>"
+
+  effect:
+    enabled: true
+    aliases: [ "eff", "ef" ]
+    permission: "anima.effect"
+    description: "Manage equipment potion effects"
+    usage: "/anima effect <add|set|edit|remove|clear>"
+
+  particle:
+    enabled: true
+    aliases: [ "par", "p" ]
+    permission: "anima.particle"
+    description: "Manage item particle effects"
+    usage: "/anima particle <add|edit|display|remove|clear>"
+
+  kits:
+    enabled: true
+    aliases: [ "kit", "k" ]
+    permission: "anima.kits"
+    description: "Open the Kits Manager"
+    usage: "/anima kits [save|load|list|delete] [kit-name]"
+
+  repair:
+    enabled: true
+    aliases: [ "fix", "r" ]
+    permission: "anima.repair"
+    description: "Fully repair the item in hand"
+    usage: "/anima repair"
+
+  permission:
+    enabled: true
+    aliases: [ "perm", "perms" ]
+    permission: "anima.permission"
+    description: "Manage runtime player permissions"
+    usage: "/anima permission <player> <group|node> <value>"
+
+  give:
+    enabled: true
+    aliases: [ "gi" ]
+    permission: "anima.give"
+    description: "Give a kit or custom item to a player"
+    usage: "/anima give <player> <kit-name>"
+
+  clearall:
+    enabled: true
+    aliases: [ "clear", "ca" ]
+    permission: "anima.clear"
+    description: "Reset all modifications on held item"
+    usage: "/anima clearall"
+
+  destroy:
+    enabled: true
+    aliases: [ "del" ]
+    permission: "anima.destroy"
+    description: "Destroy the item in hand"
+    usage: "/anima destroy"
+
+  reload:
+    enabled: true
+    aliases: [ "rl" ]
+    permission: "anima.reload"
+    description: "Reload plugin configuration"
+    usage: "/anima reload"
+
+# ── Tab-Completion Settings ───────────────────────────────────
+tab_completion:
+  # Show sub-commands the player doesn't have permission for
+  show_locked_subcommands: false
+  # Sort suggestions alphabetically
+  sort_alphabetically: true

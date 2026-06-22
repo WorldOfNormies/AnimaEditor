@@ -1,0 +1,513 @@
+# ============================================================
+#   Anima Editor GUI - Full Configuration File (AnimaEditorGUI.yml)
+# ============================================================
+
+fill:
+  enabled: false
+
+# ============================================================
+# 1. MAIN MENU
+# ============================================================
+main_menu:
+  title: "<bold><red>[ </red><gradient:#FF0000:#FFFFFF:#0000FF>Anima Editor GUI Main Menu</gradient><red> ]</red></bold>"
+  rows: 6
+  items:
+    # Row 0
+    0: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: ENDER_CHEST, name: "<bold><gold>✦ Kits Manager</gold></bold>", action: OPEN_KITS_MENU, permission: anima.kits }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: PLAYER_HEAD, name: "<bold><aqua>✦ Creator Info</aqua></bold>", action: VERSION_INFO, permission: anima.use }
+    
+    # Row 1
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: NAME_TAG, name: "<bold><white>✦ Rename Item</white></bold>", action: OPEN_NAME_MENU, permission: anima.setname }
+    12: { material: WRITABLE_BOOK, name: "<bold><green>✦ Edit Lore</green></bold>", action: OPEN_LORE_MENU, permission: anima.setlore }
+    13: { material: WRITTEN_BOOK, name: "<bold><green>✦ Edit Description</green></bold>", action: OPEN_DESCRIPTION_MENU, permission: anima.setdescription }
+    14: { material: GOLDEN_APPLE, name: "<bold><red>✦ Repair Item</red></bold>", action: REPAIR_ITEM, permission: anima.repair }
+    15: { material: ENCHANTED_BOOK, name: "<bold><light_purple>✦ Enchantments</light_purple></bold>", action: OPEN_ENCHANT_MENU, permission: anima.setenchant }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Row 2
+    18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: KNOWLEDGE_BOOK, name: "<bold><dark_gray>✦ Name Font Style</dark_gray></bold>", action: OPEN_NAME_FONT_MENU, permission: anima.setname }
+    21: { material: SHIELD, name: "<bold><white>✦ Shield Patterns</white></bold>", action: OPEN_SHIELD_MENU, permission: anima.banner }
+    22: { material: ENCHANTING_TABLE, name: "<bold><yellow>✦ Toggle Glow</yellow></bold>", action: TOGGLE_GLOW, permission: anima.setglow }
+    23: { material: BREWING_STAND, name: "<bold><dark_purple>✦ Equipment Effects</dark_purple></bold>", action: OPEN_EFFECT_MAIN_MENU, permission: anima.effect }
+    24: { material: LANTERN, name: "<bold><gold>✦ Particle Effects</gold></bold>", action: OPEN_PARTICLE_MENU, permission: anima.particle }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Row 3
+    27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    28: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    29: { material: NETHER_STAR, name: "<bold><gradient:#FF0000:#FFFFFF:#0000FF>✦ Gradient Name</gradient></bold>", action: OPEN_GRADIENT_MENU, permission: anima.setcolor }
+    30: { material: WHITE_DYE, name: "<bold><red>✦ Set Color</red></bold>", action: OPEN_COLOR_MENU, permission: anima.setcolor }
+    31: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (1)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
+    32: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (2)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
+    33: { material: IRON_BARS, name: "<bold><gray>✦ Toggle Unbreakable (3)</gray></bold>", action: TOGGLE_UNBREAKABLE, permission: anima.setunbreakable }
+    34: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Row 4
+    36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    37: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    38: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    39: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    40: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    41: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    42: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    43: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Row 5
+    45: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    47: { material: RED_BUNDLE, name: "<bold><red>✦ Clear All</red></bold>", action: CLEAR_ALL, permission: anima.clear }
+    48: { material: BELL, name: "<bold><yellow>✦ Reset Actions</yellow></bold>", action: RESET_ACTIONS }
+    49: { material: GREEN_BUNDLE, name: "<bold><green>✦ Kits Shortcut</green></bold>", action: OPEN_KITS_MENU, permission: anima.kits }
+    50: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    51: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    53: { material: LECTERN, name: "<bold><aqua>✦ Reload Plugin</aqua></bold>", action: RELOAD_PLUGIN, permission: anima.reload }
+
+# ============================================================
+# 2. EQUIPMENT EFFECT MAIN MENU
+# ============================================================
+equipment_effect_main_menu:
+  title: "<bold><dark_purple>[ Equipment Effect Main Menu ]</dark_purple></bold>"
+  rows: 3
+  items:
+    0: { material: BREWING_STAND, name: "<bold><light_purple>✦ Current Effects</light_purple></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    13: { material: POTION, name: "<bold><dark_red>✦ Permanent Effects</dark_red></bold>", action: OPEN_PERMANENT_EFFECTS_MENU }
+    14: { material: SPLASH_POTION, name: "<bold><gold>✦ Interval Effects</gold></bold>", action: OPEN_INTERVAL_EFFECTS_MENU }
+    15: { material: LINGERING_POTION, name: "<bold><yellow>✦ Spread Effects</yellow></bold>", action: OPEN_SPREAD_EFFECTS_MENU }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    21: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    22: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Save / Apply</green></bold>", action: SAVE_EFFECTS }
+
+# ============================================================
+# 3. EQUIPMENT EFFECT PERMANENT MENU
+# ============================================================
+equipment_effect_permanent_menu:
+  title: "<bold><dark_red>[ Equipment Effect Permanent Menu ]</dark_red></bold>"
+  rows: 3
+  items:
+    0: { material: POTION, name: "<bold><gray>Effect Selection Status</gray></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: POTION, name: "<bold><red>✦ Select Permanent Potion Effect</red></bold>" }
+    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    13: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    15: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Amplifier / Value</aqua></bold>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: RED_BUNDLE, name: "<bold><red>✦ Back</red></bold>", action: OPEN_EFFECT_MAIN_MENU }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    21: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    22: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm</green></bold>" }
+
+# ============================================================
+# 4. EQUIPMENT EFFECT INTERVAL MENU
+# ============================================================
+equipment_effect_interval_menu:
+  title: "<bold><gold>[ Equipment Effect Interval Menu ]</bold></gold>"
+  rows: 3
+  items:
+    0: { material: SPLASH_POTION, name: "<bold><gray>Interval Type Status</gray></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: SPLASH_POTION, name: "<bold><yellow>✦ Select Interval Potion Effect</yellow></bold>" }
+    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    13: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Duration / Amplifier</aqua></bold>" }
+    14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    15: { material: CLOCK, name: "<bold><gold>✦ Adjust Time Interval</gold></bold>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: RED_BUNDLE, name: "<bold><red>✦ Back</red></bold>", action: OPEN_EFFECT_MAIN_MENU }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    21: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    22: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm</green></bold>" }
+
+# ============================================================
+# 5. EQUIPMENT EFFECT SPREAD MENU
+# ============================================================
+equipment_effect_spread_menu:
+  title: "<bold><yellow>[ Equipment Effect Spread Menu ]</bold></yellow>"
+  rows: 3
+  items:
+    0: { material: LINGERING_POTION, name: "<bold><gray>Spread Type Status</gray></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: LINGERING_POTION, name: "<bold><yellow>✦ Select Spread Potion Effect</yellow></bold>" }
+    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    13: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Settings</aqua></bold>" }
+    14: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    15: { material: CLOCK, name: "<bold><gold>✦ Adjust Frequency</gold></bold>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: RED_BUNDLE, name: "<bold><red>✦ Back</red></bold>", action: OPEN_EFFECT_MAIN_MENU }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    21: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    22: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm</green></bold>" }
+
+# ============================================================
+# 6. KITS MAIN MENU
+# ============================================================
+kits_main_menu:
+  title: "<bold><gold>[ Kits Main Menu ]</gold></bold>"
+  rows: 6
+  items:
+    # Outer frame
+    0: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: ENDER_CHEST, name: "<bold><aqua>✦ Global Kits Config</aqua></bold>" }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Active kit icon preview space
+    10: { material: CHEST, name: "<bold><yellow>✦ Kit #1</yellow></bold>" }
+    
+    # Grid interior: Filled out with light clear glass pane layers
+    11: { material: GLASS_PANE, name: " " }
+    12: { material: GLASS_PANE, name: " " }
+    13: { material: GLASS_PANE, name: " " }
+    14: { material: GLASS_PANE, name: " " }
+    15: { material: GLASS_PANE, name: " " }
+    16: { material: GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    19: { material: GLASS_PANE, name: " " }
+    20: { material: GLASS_PANE, name: " " }
+    21: { material: GLASS_PANE, name: " " }
+    22: { material: GLASS_PANE, name: " " }
+    23: { material: GLASS_PANE, name: " " }
+    24: { material: GLASS_PANE, name: " " }
+    25: { material: GLASS_PANE, name: " " }
+    26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    28: { material: GLASS_PANE, name: " " }
+    29: { material: GLASS_PANE, name: " " }
+    30: { material: GLASS_PANE, name: " " }
+    31: { material: GLASS_PANE, name: " " }
+    32: { material: GLASS_PANE, name: " " }
+    33: { material: GLASS_PANE, name: " " }
+    34: { material: GLASS_PANE, name: " " }
+    35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    37: { material: GLASS_PANE, name: " " }
+    38: { material: GLASS_PANE, name: " " }
+    39: { material: GLASS_PANE, name: " " }
+    40: { material: GLASS_PANE, name: " " }
+    41: { material: GLASS_PANE, name: " " }
+    42: { material: GLASS_PANE, name: " " }
+    43: { material: GLASS_PANE, name: " " }
+    44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Bottom Controls Row
+    45: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    47: { material: RED_STAINED_GLASS_PANE, name: "<bold><red>✦ Previous Page</red></bold>" }
+    48: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    49: { material: WRITABLE_BOOK, name: "<bold><green>✦ Create New Kit</green></bold>", action: OPEN_NEW_KIT_MENU }
+    50: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    51: { material: LIME_STAINED_GLASS_PANE, name: "<bold><green>✦ Next Page</green></bold>" }
+    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    53: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+
+# ============================================================
+# 7. NEW KIT MENU
+# ============================================================
+new_kit_menu:
+  title: "<bold><green>[ New Kit ]</green></bold>"
+  rows: 6
+  items:
+    0: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: CHEST, name: "<bold><yellow>✦ Place Kit Items Below</yellow></bold>" }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Internal user kit-creation slots are left as empty GLASS_PANES
+    10: { material: GLASS_PANE, name: " " }
+    11: { material: GLASS_PANE, name: " " }
+    12: { material: GLASS_PANE, name: " " }
+    13: { material: GLASS_PANE, name: " " }
+    14: { material: GLASS_PANE, name: " " }
+    15: { material: GLASS_PANE, name: " " }
+    16: { material: GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    19: { material: GLASS_PANE, name: " " }
+    20: { material: GLASS_PANE, name: " " }
+    21: { material: GLASS_PANE, name: " " }
+    22: { material: GLASS_PANE, name: " " }
+    23: { material: GLASS_PANE, name: " " }
+    24: { material: GLASS_PANE, name: " " }
+    25: { material: GLASS_PANE, name: " " }
+    26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    28: { material: GLASS_PANE, name: " " }
+    29: { material: GLASS_PANE, name: " " }
+    30: { material: GLASS_PANE, name: " " }
+    31: { material: GLASS_PANE, name: " " }
+    32: { material: GLASS_PANE, name: " " }
+    33: { material: GLASS_PANE, name: " " }
+    34: { material: GLASS_PANE, name: " " }
+    35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    37: { material: GLASS_PANE, name: " " }
+    38: { material: GLASS_PANE, name: " " }
+    39: { material: GLASS_PANE, name: " " }
+    40: { material: GLASS_PANE, name: " " }
+    41: { material: GLASS_PANE, name: " " }
+    42: { material: GLASS_PANE, name: " " }
+    43: { material: GLASS_PANE, name: " " }
+    44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    
+    # Footer Row
+    45: { material: RED_BUNDLE, name: "<bold><red>✦ Cancel and Go Back</red></bold>", action: OPEN_KITS_MENU }
+    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    47: { material: RED_STAINED_GLASS_PANE, name: "<bold><red>✦ Clear Grid</red></bold>" }
+    48: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    49: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Edit Kit Meta / Name</aqua></bold>" }
+    50: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    51: { material: LIME_STAINED_GLASS_PANE, name: "<bold><green>✦ Save Kit</green></bold>" }
+    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm & Close</green></bold>" }
+
+# ============================================================
+# 8. NAME FONT STYLE MENU
+# ============================================================
+name_font_style_menu:
+  title: "<bold><dark_gray>[ Name Font Style Menu ]</dark_gray></bold>"
+  rows: 3
+  items:
+    0: { material: WRITTEN_BOOK, name: "<bold><white>✦ Write/Apply Item Name Text</white></bold>", action: CHAT_INPUT_NAME }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    3: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    4: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    5: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    6: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: WRITABLE_BOOK, name: "<bold><bold>✦ Toggle Bold</bold></bold>" }
+    12: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    13: { material: IRON_INGOT, name: "<bold><italic>✦ Toggle Italic</italic></bold>" }
+    14: { material: STRING, name: "<bold><underlined>✦ Toggle Underline</underlined></bold>" }
+    15: { material: STICK, name: "<bold><obfuscated>✦ Toggle Magic / Obfuscated</obfuscated></bold>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    21: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    22: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    23: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    24: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: GREEN_BUNDLE, name: "<bold><green>✦ Apply Font Styles</green></bold>" }
+
+# ============================================================
+# 9. SET ARMOR TRIM MAIN MENU
+# ============================================================
+set_armor_trim_main_menu:
+  title: "<bold><aqua>[ Set Armor Trim Main Menu ]</aqua></bold>"
+  rows: 6
+  items:
+    0: { material: NAME_TAG, name: "<bold><gray>Trim Status Info</gray></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    3: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    4: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    5: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    6: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Sentry Armor Trim</aqua>" }
+    12: { material: VEX_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Vex Armor Trim</aqua>" }
+    13: { material: WILD_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Wild Armor Trim</aqua>" }
+    14: { material: COAST_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Coast Armor Trim</aqua>" }
+    15: { material: DUNE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Dune Armor Trim</aqua>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Wayfinder Armor Trim</aqua>" }
+    21: { material: RAISER_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Raiser Armor Trim</aqua>" }
+    22: { material: SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Shaper Armor Trim</aqua>" }
+    23: { material: HOST_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Host Armor Trim</aqua>" }
+    24: { material: SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Silence Armor Trim</aqua>" }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    28: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    29: { material: WARD_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Ward Armor Trim</aqua>" }
+    30: { material: EYE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Eye Armor Trim</aqua>" }
+    31: { material: VEX_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Vex Armor Trim Variant</aqua>" }
+    32: { material: SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Snout Armor Trim</aqua>" }
+    33: { material: RIB_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Rib Armor Trim</aqua>" }
+    34: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    37: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    38: { material: NETHERITE_UPGRADE_SMITHING_TEMPLATE, name: "<gold>Netherite Upgrade</gold>" }
+    39: { material: TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Tide Armor Trim</aqua>" }
+    40: { material: SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, name: "<aqua>Spire Armor Trim</aqua>" }
+    41: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    42: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    43: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    45: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
+    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    47: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    48: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    49: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    50: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    51: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Apply Selected Trim</green></bold>" }
+
+# ============================================================
+# 10. SET COLOR MENU
+# ============================================================
+set_color_menu:
+  title: "<bold><red>[ Set Color Menu ]</red></bold>"
+  rows: 6
+  items:
+    0: { material: WHITE_DYE, name: "<bold><white>✦ Current Selected Color</white></bold>" }
+    1: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    2: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    3: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    4: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    5: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    6: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    7: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    8: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    9: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    10: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    11: { material: WHITE_DYE, name: "<white>White Dye</white>" }
+    12: { material: LIGHT_GRAY_DYE, name: "<gray>Light Gray Dye</gray>" }
+    13: { material: GRAY_DYE, name: "<dark_gray>Gray Dye</dark_gray>" }
+    14: { material: BLACK_DYE, name: "<black>Black Dye</black>" }
+    15: { material: BROWN_DYE, name: "<gold>Brown Dye</gold>" }
+    16: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    17: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    18: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    19: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    20: { material: RED_DYE, name: "<red>Red Dye</red>" }
+    21: { material: ORANGE_DYE, name: "<gold>Orange Dye</gold>" }
+    22: { material: YELLOW_DYE, name: "<yellow>Yellow Dye</yellow>" }
+    23: { material: LIME_DYE, name: "<green>Lime Dye</green>" }
+    24: { material: GREEN_DYE, name: "<dark_green>Green Dye</dark_green>" }
+    25: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    26: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    27: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    28: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    29: { material: CYAN_DYE, name: "<aqua>Cyan Dye</aqua>" }
+    30: { material: LIGHT_BLUE_DYE, name: "<blue>Light Blue Dye</blue>" }
+    31: { material: BLUE_DYE, name: "<dark_blue>Blue Dye</dark_blue>" }
+    32: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    33: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    34: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    35: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    36: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    37: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    38: { material: PURPLE_DYE, name: "<dark_purple>Purple Dye</dark_purple>" }
+    39: { material: MAGENTA_DYE, name: "<light_purple>Magenta Dye</light_purple>" }
+    40: { material: PINK_DYE, name: "<light_purple>Pink Dye</light_purple>" }
+    41: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    42: { material: WRITABLE_BOOK, name: "<bold><aqua>✦ Custom HEX Code Input</aqua></bold>" }
+    43: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    44: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    45: { material: RED_BUNDLE, name: "<bold><red>✦ Back to Main Menu</red></bold>", action: OPEN_MAIN_MENU }
+    46: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    47: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    48: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    49: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    50: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    51: { material: WHITE_STAINED_GLASS_PANE, name: " " }
+    52: { material: BLACK_STAINED_GLASS_PANE, name: " " }
+    53: { material: GREEN_BUNDLE, name: "<bold><green>✦ Confirm Color Selection</green></bold>" }

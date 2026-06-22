@@ -1,0 +1,28 @@
+# ============================================================
+#   AnimaEditor - Per-Player Permission Override File
+#   Permissions/Steve.yml
+#
+#   This file is auto-created when a player's permissions are
+#   modified via /anima permission or the GUI.
+#   One file per player, named <PlayerName>.yml
+# ============================================================
+
+player:
+  name: Steve
+  uuid: "00000000-0000-0000-0000-000000000000"
+  group: vip
+
+# Override individual permissions (true = grant, false = deny)
+# Leave empty to inherit everything from group.
+overrides:
+  anima.setenchant: true
+  anima.particle: true
+
+# Override individual limits (overrides group limits)
+limit_overrides:
+  max_kits: 20
+  max_enchant_level: 15
+  can_use_nbt: false
+
+# Kit cooldown tracking (managed by plugin — do not edit manually)
+kit_cooldowns: {}

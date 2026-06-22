@@ -1,0 +1,92 @@
+# ============================================================
+#   AnimaEditor - Example Kit File
+#   Kits/example_inferno_blade.yml
+#
+#   This is a sample kit file showing all available fields.
+#   Copy and modify this to create your own kits.
+#   Kit files in this folder are auto-loaded by the plugin.
+# ============================================================
+
+# Kit metadata
+meta:
+  id: example_inferno_blade
+  name: "<gradient:#FF4500:#FF8C00:#FFD700>⚔ Inferno Blade</gradient>"
+  creator: "WorldOfNormies"
+  created_at: "2025-01-01 00:00:00"
+  description:
+    - "<gray>A legendary blade forged in the"
+    - "<gradient:#FF4500:#FFD700>heart of a dying star.</gradient>"
+    - ""
+    - "<dark_gray>One swing. Eternal fire."
+  public: true
+  featured: true
+
+# The item this kit produces
+item:
+  material: NETHERITE_SWORD
+
+  # Display name — use MiniMessage gradient syntax!
+  name: "<bold><gradient:#FF4500:#FF8C00:#FFD700>⚔ Inferno Blade</gradient></bold>"
+
+  # Lore lines — each entry is one line
+  lore:
+    - "<gray>────────────────────"
+    - "<gradient:#FF4500:#FFD700>Tier: Legendary</gradient>"
+    - "<gray>────────────────────"
+    - "<white>Damage: <red>+12 ❤</red>"
+    - "<white>Speed:  <gold>+1.5 ⚡</gold>"
+    - "<gray>────────────────────"
+    - "<dark_gray>Forged from the ashes of"
+    - "<dark_gray>a thousand fallen warriors."
+
+  # Enchantments — use vanilla names, level can exceed normal limits
+  enchantments:
+    sharpness: 10
+    fire_aspect: 3
+    unbreaking: 5
+    looting: 5
+    mending: 1
+
+  # Item flags to hide
+  flags:
+    - HIDE_ENCHANTS
+    - HIDE_ATTRIBUTES
+
+  # Set unbreakable
+  unbreakable: true
+
+  # Enable fake enchant glow (without showing enchantments)
+  glow: false
+
+  # Custom model data (for resource packs)
+  custom_model_data: 0
+
+  # Equipment effects when worn/held
+  equipment_effects:
+    permanent:
+      - effect: STRENGTH
+        level: 2
+    interval:
+      - effect: REGENERATION
+        level: 1
+        interval_ticks: 100
+    spread:
+      - effect: WEAKNESS
+        level: 1
+        radius: 5.0
+        interval_ticks: 60
+
+  # Particle effects
+  particles:
+    - type: FLAME
+      offset_x: 0.2
+      offset_y: 0.5
+      offset_z: 0.2
+      speed: 0.05
+      count: 3
+      display_mode: HELD
+
+  # NBT tags (raw custom NBT)
+  nbt:
+    AnimaKit: "example_inferno_blade"
+    CustomTag: "WorldOfNormies"

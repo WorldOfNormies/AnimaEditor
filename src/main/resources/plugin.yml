@@ -1,0 +1,118 @@
+name: AnimaEditor
+version: '${version}'
+main: com.worldofnormies.animaeditor.AnimaEditorPlugin
+api-version: '1.21'
+description: '${description}'
+authors: [ WorldOfNormies ]
+website: https://github.com/WorldOfNormies/AnimaEditor
+
+depend: []
+softdepend:
+  - PlaceholderAPI
+
+commands:
+  anima:
+    description: Main AnimaEditor command
+    usage: /anima [sub-command]
+    aliases:
+      - ae
+      - editor
+    permission: anima.use
+
+permissions:
+  anima.use:
+    description: Open the Anima Editor GUI
+    default: op
+  anima.kits:
+    description: Access the kits manager
+    default: op
+  anima.setenchant:
+    description: Apply unrestricted enchantments
+    default: op
+  anima.setcolor:
+    description: Set custom colors and gradients
+    default: op
+  anima.setname:
+    description: Rename items with formatting
+    default: op
+  anima.setlore:
+    description: Edit item lore
+    default: op
+  anima.setdescription:
+    description: Edit item descriptions
+    default: op
+  anima.setnbt:
+    description: Edit raw NBT metadata
+    default: op
+  anima.setglow:
+    description: Toggle fake glow effect
+    default: op
+  anima.setunbreakable:
+    description: Toggle unbreakable flag
+    default: op
+  anima.armortrim:
+    description: Apply armor trims
+    default: op
+  anima.banner:
+    description: Edit banner and shield patterns
+    default: op
+  anima.effect:
+    description: Manage equipment potion effects
+    default: op
+  anima.particle:
+    description: Manage item particle effects
+    default: op
+  anima.repair:
+    description: Repair items
+    default: op
+  anima.permission:
+    description: Manage runtime permissions
+    default: op
+  anima.reload:
+    description: Reload plugin config
+    default: op
+  anima.import:
+    description: Import kit templates
+    default: op
+  anima.remove:
+    description: Remove kit entries
+    default: op
+  anima.clear:
+    description: Clear all item modifications
+    default: op
+  anima.give:
+    description: Give custom items and kits
+    default: op
+  anima.take:
+    description: Take items from players
+    default: op
+  anima.destroy:
+    description: Destroy in-world items
+    default: op
+  anima.*:
+    description: Full access to all AnimaEditor features
+    default: op
+    children:
+      anima.use: true
+      anima.kits: true
+      anima.setenchant: true
+      anima.setcolor: true
+      anima.setname: true
+      anima.setlore: true
+      anima.setdescription: true
+      anima.setnbt: true
+      anima.setglow: true
+      anima.setunbreakable: true
+      anima.armortrim: true
+      anima.banner: true
+      anima.effect: true
+      anima.particle: true
+      anima.repair: true
+      anima.permission: true
+      anima.reload: true
+      anima.import: true
+      anima.remove: true
+      anima.clear: true
+      anima.give: true
+      anima.take: true
+      anima.destroy: true

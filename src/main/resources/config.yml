@@ -1,0 +1,115 @@
+# ============================================================
+#   AnimaEditor - Main Configuration File
+#   Plugin by WorldOfNormies
+# ============================================================
+
+# General plugin settings
+settings:
+  # Language prefix shown in chat messages
+  prefix: "<bold><gradient:#FF0000:#FFFFFF:#0000FF>AnimaEditor</gradient></bold> <dark_gray>»</dark_gray>"
+
+  # Debug mode — enables verbose console logging
+  debug: false
+
+  # Whether to use PlaceholderAPI for gradient variable support (requires PAPI installed)
+  use_placeholderapi: true
+
+  # Item held check — if true, most commands require an item in hand
+  require_item_in_hand: true
+
+  # Default locale (currently only 'en' is supported)
+  locale: en
+
+# ── Gradient Presets ─────────────────────────────────────────
+# These are named gradients that players/admins can reference
+# using /anima gradient <preset-name>
+# Syntax: <gradient:#HEX1:#HEX2:#HEX3> (Adventure MiniMessage format)
+gradient_presets:
+  american:      "<gradient:#FF0000:#FFFFFF:#0000FF>"
+  fire:          "<gradient:#FF4500:#FF8C00:#FFD700>"
+  ocean:         "<gradient:#00B4DB:#0083B0>"
+  aurora:        "<gradient:#00C9FF:#92FE9D>"
+  sunset:        "<gradient:#FF6B6B:#FFE66D>"
+  galaxy:        "<gradient:#200122:#6F0000>"
+  neon:          "<gradient:#FF00FF:#00FFFF>"
+  emerald:       "<gradient:#11998E:#38EF7D>"
+  royal:         "<gradient:#141E30:#243B55>"
+  gold:          "<gradient:#F7971E:#FFD200>"
+  candy:         "<gradient:#FF69B4:#FFD700:#00BFFF>"
+  toxic:         "<gradient:#39FF14:#ADFF2F>"
+  crimson:       "<gradient:#8B0000:#FF0000:#FF6347>"
+  ice:           "<gradient:#A8EDEA:#FED6E3>"
+  void:          "<gradient:#0F0C29:#302B63:#24243E>"
+  lava:          "<gradient:#200122:#6F0000:#FF4500>"
+  prism:         "<gradient:#DA22FF:#9733EE>"
+  mango:         "<gradient:#FFE259:#FFA751>"
+  mint:          "<gradient:#00B09B:#96C93D>"
+  dusk:          "<gradient:#2C3E50:#FD746C>"
+
+# ── Font / Style Presets ──────────────────────────────────────
+# Named text style wrappers for the /anima name font command
+font_presets:
+  bold:          "<bold>"
+  italic:        "<italic>"
+  bold_italic:   "<bold><italic>"
+  obfuscated:    "<obfuscated>"
+  strikethrough: "<strikethrough>"
+  underline:     "<underlined>"
+
+# ── Kits Settings ─────────────────────────────────────────────
+kits:
+  # Folder where individual kit files are stored
+  folder: "Kits"
+  # Max kits a player can create (0 = unlimited for ops)
+  max_kits_per_player: 10
+  # Cooldown in seconds between kit redemptions (0 = no cooldown)
+  default_cooldown: 0
+
+# ── Permissions Settings ──────────────────────────────────────
+permissions_manager:
+  # Folder where per-player permission files are stored
+  folder: "Permissions"
+  # Whether to log permission changes to console
+  log_changes: true
+
+# ── GUI Settings ──────────────────────────────────────────────
+gui:
+  # Fill empty slots with glass panes
+  fill_empty_slots: true
+  fill_material: BLACK_STAINED_GLASS_PANE
+
+# ── Particle Settings ─────────────────────────────────────────
+particles:
+  # Tick rate at which particles update (20 = 1 second)
+  update_rate_ticks: 5
+  # Max particle effects per item
+  max_per_item: 5
+
+# ── Effect Settings ───────────────────────────────────────────
+effects:
+  # Max equipment effects per item
+  max_per_item: 8
+
+# ── Messages ──────────────────────────────────────────────────
+messages:
+  no_permission:      "<red>You don't have permission to do that.</red>"
+  no_item_in_hand:    "<red>You must hold an item to use this command.</red>"
+  item_renamed:       "<green>Item successfully renamed!</green>"
+  lore_updated:       "<green>Item lore updated!</green>"
+  glow_enabled:       "<yellow>Glow effect <green>enabled</green>!"
+  glow_disabled:      "<yellow>Glow effect <red>disabled</red>!"
+  unbreakable_on:     "<gray>Item is now <green>Unbreakable</green>!"
+  unbreakable_off:    "<gray>Item is no longer unbreakable."
+  item_repaired:      "<green>Item fully repaired!"
+  item_cleared:       "<red>All modifications cleared from item."
+  item_destroyed:     "<red>Item destroyed."
+  kit_saved:          "<green>Kit saved successfully!"
+  kit_loaded:         "<green>Kit loaded!"
+  kit_not_found:      "<red>Kit not found."
+  plugin_reloaded:    "<aqua>AnimaEditor reloaded!"
+  enchant_applied:    "<light_purple>Enchantment applied!"
+  trim_applied:       "<aqua>Armor trim applied!"
+  gradient_applied:   "<green>Gradient applied to item name!"
+  color_applied:      "<green>Color applied to item!"
+  effect_saved:       "<dark_purple>Equipment effects saved!"
+  particle_saved:     "<gold>Particle effect saved!"

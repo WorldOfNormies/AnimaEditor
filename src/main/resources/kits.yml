@@ -1,0 +1,37 @@
+# ============================================================
+#   AnimaEditor - Kits Registry (kits.yml)
+#   This file acts as the index/registry of all saved kits.
+#   Individual kit data is stored as separate files inside the
+#   /Kits/ folder (one .yml file per kit).
+# ============================================================
+
+# Global kit settings
+settings:
+  # If true, players can browse a public kit library
+  public_library_enabled: true
+  # If true, admins can mark kits as featured
+  featured_enabled: true
+
+# ── Kit Registry ──────────────────────────────────────────────
+# Each entry here is auto-managed by the plugin.
+# Format:
+#   <kit-id>:
+#     name: "<display name with MiniMessage>"
+#     creator: "<player name>"
+#     created_at: "<timestamp>"
+#     file: "Kits/<kit-id>.yml"
+#     public: true/false
+#     featured: true/false
+#
+# Example (created by plugin, do not manually edit unless you know what you're doing):
+# ─────────────────────────────────────────────────────────────
+# example_sword:
+#   name: "<gradient:#FF4500:#FFD700>⚔ Inferno Blade</gradient>"
+#   creator: "Steve"
+#   created_at: "2025-01-01 00:00:00"
+#   file: "Kits/example_sword.yml"
+#   public: true
+#   featured: false
+# ─────────────────────────────────────────────────────────────
+
+kits: {}

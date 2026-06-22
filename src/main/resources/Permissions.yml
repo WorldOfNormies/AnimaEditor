@@ -1,0 +1,106 @@
+# ============================================================
+#   AnimaEditor - Permissions Configuration (Permissions.yml)
+#
+#   Define groups, command usage limits, and feature access.
+#   Individual per-player overrides live in the /Permissions/
+#   folder as separate <PlayerName>.yml files.
+# ============================================================
+
+# ── Permission Groups ─────────────────────────────────────────
+# Assign players to groups via LuckPerms or the /anima permission command.
+# Players inherit all permissions listed under their group.
+groups:
+  default:
+    display_name: "<gray>Default"
+    permissions:
+      - anima.use
+    limits:
+      max_kits: 0
+      max_enchant_level: 5
+      max_effects: 2
+      max_particles: 1
+      can_use_gradient: false
+      can_use_hex_color: false
+      can_use_nbt: false
+
+  vip:
+    display_name: "<gradient:#FFD700:#FFA500>VIP</gradient>"
+    permissions:
+      - anima.use
+      - anima.setname
+      - anima.setlore
+      - anima.setdescription
+      - anima.setglow
+      - anima.setunbreakable
+      - anima.setcolor
+      - anima.repair
+      - anima.kits
+    limits:
+      max_kits: 5
+      max_enchant_level: 10
+      max_effects: 4
+      max_particles: 2
+      can_use_gradient: true
+      can_use_hex_color: true
+      can_use_nbt: false
+
+  elite:
+    display_name: "<gradient:#00FFFF:#0080FF>Elite</gradient>"
+    permissions:
+      - anima.use
+      - anima.setname
+      - anima.setlore
+      - anima.setdescription
+      - anima.setglow
+      - anima.setunbreakable
+      - anima.setcolor
+      - anima.repair
+      - anima.kits
+      - anima.setenchant
+      - anima.armortrim
+      - anima.banner
+      - anima.effect
+      - anima.particle
+    limits:
+      max_kits: 15
+      max_enchant_level: 20
+      max_effects: 6
+      max_particles: 4
+      can_use_gradient: true
+      can_use_hex_color: true
+      can_use_nbt: false
+
+  admin:
+    display_name: "<gradient:#FF0000:#FFFFFF:#0000FF>Admin</gradient>"
+    permissions:
+      - anima.*
+    limits:
+      max_kits: -1          # -1 = unlimited
+      max_enchant_level: -1 # -1 = unlimited
+      max_effects: -1
+      max_particles: -1
+      can_use_gradient: true
+      can_use_hex_color: true
+      can_use_nbt: true
+
+# ── Per-Node Cooldowns ────────────────────────────────────────
+# Cooldowns (in seconds) per permission node.
+# Set to 0 to disable cooldown for that action.
+cooldowns:
+  anima.repair: 0
+  anima.give: 0
+  anima.destroy: 0
+  anima.clear: 0
+
+# ── Blacklisted Materials ─────────────────────────────────────
+# These materials cannot be modified via AnimaEditor by non-admins.
+blacklisted_materials:
+  - BEDROCK
+  - COMMAND_BLOCK
+  - CHAIN_COMMAND_BLOCK
+  - REPEATING_COMMAND_BLOCK
+  - BARRIER
+
+# ── Blacklisted Enchantments ──────────────────────────────────
+# These enchantments cannot be applied by non-admins.
+blacklisted_enchantments: []
