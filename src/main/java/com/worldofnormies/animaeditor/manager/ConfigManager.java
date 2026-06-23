@@ -20,8 +20,8 @@ public class ConfigManager {
 
     public void load() {
         guiConfig         = loadFile("AnimaEditorGUI.yml");
-        kitsConfig        = loadFile("kits.yml");
-        permissionsConfig = loadFile("Permissions.yml");
+        kitsConfig        = loadFile("Kits/kits.yml");
+        permissionsConfig = loadFile("Permissions/Permissions.yml");
         commandsConfig    = loadFile("commands.yml");
     }
 
