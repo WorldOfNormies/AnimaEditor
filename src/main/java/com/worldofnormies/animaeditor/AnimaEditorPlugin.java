@@ -26,8 +26,8 @@ public class AnimaEditorPlugin extends JavaPlugin {
         // Save default configs
         saveDefaultConfig();
         saveResource("AnimaEditorGUI.yml", false);
-        saveResource("kits.yml", false);
-        saveResource("Permissions.yml", false);
+        saveResource("Kits/kits.yml", false);
+        saveResource("Permissions/Permissions.yml", false);
         saveResource("commands.yml", false);
 
         // Create plugin subdirectories
